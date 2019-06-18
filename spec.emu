@@ -9,6 +9,14 @@ stage: 0
 contributors: Mike Samuel
 </pre>
 
+<emu-note type="editor">EDITOR'S NOTE
+<span>
+&nbsp;First, this proposal adjusts `import(...)` to not stringify its argument.
+This means that the host callout can pass given a TrustedModuleSpecifier but
+not given a raw string.</span>
+</emu-note>
+
+
 
 <emu-clause id="sec-import-calls">
   <h1>Import Calls</h1>
@@ -30,6 +38,36 @@ contributors: Mike Samuel
   </emu-clause>
 </emu-clause>
 
+
+<emu-note type="editor">EDITOR'S NOTE
+<div>
+Warning: this may lead to a different apparent order of operation;
+  user code receives the module promise before the argument is stringified.
+
+<pre><code class="javascript">
+const modulePromise = import({
+  toString() {
+    console.log('stringified');
+    return './foo';
+  },
+};
+console.log('got promise');
+modulePromise.then(
+  () =&gt; { console.log('module resolved'); },
+() =&gt; { console.log('module rejected'); });
+
+// Before:              stringified, got promise, module ...
+//                                 &#10537;
+// With this proposal:  got promise, stringified, module ...
+</code></pre></div>
+</emu-note>
+
+<emu-note type="editor">EDITOR'S NOTE
+<span>&nbsp;Second, this proposal adjusts HostImportModuleDynamically to deal with non-string
+  _specifier_s.  It also threads the eventual string for of the specifier through to
+  FinishDynamicImport.  This allows us to maintain the apparent order of operations.
+</span>
+</emu-note>
 
 
 <emu-clause id="sec-hostimportmoduledynamically" aoid="HostImportModuleDynamically">
@@ -130,6 +168,14 @@ contributors: Mike Samuel
   Evaluate concrete method. This might require performing similar
   normalization as HostResolveImportedModule does.</p>
 </emu-clause>
+
+
+<emu-note type="editor">EDITOR'S NOTE
+<span>Finally, we adjust FinishDynamicImport to use the module specifier string computed
+  by the host callout.</span>
+</emu-note>
+
+
 
 <emu-clause id="sec-finishdynamicimport" aoid="FinishDynamicImport">
   <h1>Runtime Semantics: FinishDynamicImport ( _referencingScriptOrModule_, _specifier_, _promiseCapability_, _completion_ )</h1>
