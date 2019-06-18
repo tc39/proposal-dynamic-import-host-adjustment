@@ -41,7 +41,7 @@ not given a raw string.</span>
 
 <emu-note type="editor">EDITOR'S NOTE
 <div>
-Warning: this may lead to a different apparent order of operation;
+&nbsp;Warning: this may lead to a different apparent order of operation;
   user code receives the module promise before the argument is stringified.
 
 <pre><code class="javascript">
@@ -59,7 +59,12 @@ modulePromise.then(
 // Before:              stringified, got promise, module ...
 //                                 &#10537;
 // With this proposal:  got promise, stringified, module ...
-</code></pre></div>
+</code></pre>
+
+This could be fixed by stringifying and passing both _specifier_ and
+_specifierString_ through to the host callout, and adding a requirement
+that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).
+</div>
 </emu-note>
 
 <emu-note type="editor">EDITOR'S NOTE
@@ -171,7 +176,7 @@ modulePromise.then(
 
 
 <emu-note type="editor">EDITOR'S NOTE
-<span>Finally, we adjust FinishDynamicImport to use the module specifier string computed
+<span>&nbsp;Finally, we adjust FinishDynamicImport to use the module specifier string computed
   by the host callout.</span>
 </emu-note>
 
