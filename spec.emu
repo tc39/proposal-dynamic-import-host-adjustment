@@ -9,16 +9,13 @@ stage: 0
 contributors: Mike Samuel
 </pre>
 
-<emu-note type="editor">EDITOR'S NOTE
-<span>
-&nbsp;First, this proposal adjusts `import(...)` to not stringify its argument.
-This means that the host callout can pass given a TrustedModuleSpecifier but
-not given a raw string.</span>
-</emu-note>
-
-
-
 <emu-clause id="sec-import-calls">
+  <emu-note type="editor">
+    First, this proposal adjusts `import(...)` to not stringify its argument.
+    This means that the host callout can pass given a TrustedModuleSpecifier but
+    not given a raw string.
+  </emu-note>
+
   <h1>Import Calls</h1>
 
   <emu-clause id="sec-import-call-runtime-semantics-evaluation">
@@ -36,13 +33,11 @@ not given a raw string.</span>
       1. Return _promiseCapability_.[[Promise]].
     </emu-alg>
   </emu-clause>
-</emu-clause>
 
 
-<emu-note type="editor">EDITOR'S NOTE
-<div>
-&nbsp;Warning: this may lead to a different apparent order of operation;
-  user code receives the module promise before the argument is stringified.
+  <emu-note type="editor">
+    <p>Warning: this may lead to a different apparent order of operation;
+      user code receives the module promise before the argument is stringified.</p>
 
 <pre><code class="javascript">
 const modulePromise = import({
@@ -61,21 +56,21 @@ modulePromise.then(
 // With this proposal:  got promise, stringified, module ...
 </code></pre>
 
-This could be fixed by stringifying and passing both _specifier_ and
-_specifierString_ through to the host callout, and adding a requirement
-that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).
-</div>
-</emu-note>
+    <p>This could be fixed by stringifying and passing both _specifier_ and
+      _specifierString_ through to the host callout, and adding a requirement
+      that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).</p>
+  </emu-note>
+</emu-clause>
 
-<emu-note type="editor">EDITOR'S NOTE
-<span>&nbsp;Second, this proposal adjusts HostImportModuleDynamically to deal with non-string
-  _specifier_s.  It also threads the eventual string for of the specifier through to
-  FinishDynamicImport.  This allows us to maintain the apparent order of operations.
-</span>
-</emu-note>
-
+<hr>
 
 <emu-clause id="sec-hostimportmoduledynamically" aoid="HostImportModuleDynamically">
+  <emu-note type="editor">
+    Second, this proposal adjusts HostImportModuleDynamically to deal with non-string
+    _specifier_s.  It also threads the eventual string for of the specifier through to
+    FinishDynamicImport.  This allows us to maintain the apparent order of operations.
+  </emu-note>
+
   <h1>Runtime Semantics: HostImportModuleDynamically ( _referencingScriptOrModule_, _specifier_, _promiseCapability_ )</h1>
 
   <p>HostImportModuleDynamically is an implementation-defined abstract
@@ -157,6 +152,18 @@ that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).
       _specifier_ pair, it must always do so, and the same for the
       failure path.
       </del>
+
+      <emu-note type="editor">
+        Since _specifier_ is not a string, the <em>same</em> would mean
+        less, but this is not necessary to preserve any single-fetch requirement
+        since FinishDynamicImport delegates to HostResolveImportModule which says
+        <blockquote>
+          "This operation must be idempotent if it completes
+          normally. Each time it is called with a specific
+          _referencingScriptOrModule_, _specifier_ pair as arguments
+          it must return the same Module Record instance."
+        </blockquote>
+      </emu-note>
     </li>
     <li>
       The operation must not call _promiseCapability_.[[Resolve]] or
@@ -174,15 +181,14 @@ that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).
   normalization as HostResolveImportedModule does.</p>
 </emu-clause>
 
-
-<emu-note type="editor">EDITOR'S NOTE
-<span>&nbsp;Finally, we adjust FinishDynamicImport to use the module specifier string computed
-  by the host callout.</span>
-</emu-note>
-
-
+<hr>
 
 <emu-clause id="sec-finishdynamicimport" aoid="FinishDynamicImport">
+  <emu-note type="editor">
+    Finally, we adjust FinishDynamicImport to use the module specifier
+    string computed by the host callout.
+  </emu-note>
+
   <h1>Runtime Semantics: FinishDynamicImport ( _referencingScriptOrModule_, _specifier_, _promiseCapability_, _completion_ )</h1>
 
   <p>FinishDynamicImport completes the process of a dynamic import
