@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "dynamic-import-host-adjustment",
+  "description": "A repository template for ECMAScript proposals.",
+  "scripts": {
+    "build": "ecmarkup spec.emu index.html",
+    "precommit": "npm run build"
+  },
+  "homepage": "https://github.com/mikesamuel/dynamic-import-host-adjustment#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikesamuel/dynamic-import-host-adjustment.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ecmarkup": "^3.11.5"
+  }
+}
