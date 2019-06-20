@@ -11,9 +11,10 @@ contributors: Mike Samuel
 
 <emu-clause id="sec-import-calls">
   <emu-note type="editor">
-    First, this proposal adjusts `import(...)` to not stringify its argument.
-    This means that the host callout can pass given a TrustedModuleSpecifier but
-    not given a raw string.
+    <p>See the <a href="https://github.com/mikesamuel/dynamic-import-host-adjustment#dynamic-import-host-adjustment">explainer</a>.</p>
+
+    <p>First, this proposal adjusts `import(...)` to stringify its argument
+    via a host callout.</p>
   </emu-note>
 
   <h1>Import Calls</h1>
@@ -27,187 +28,43 @@ contributors: Mike Samuel
       1. Let _argRef_ be the result of evaluating |AssignmentExpression|.
       1. Let _specifier_ be ? GetValue(_argRef_).
       1. Let _promiseCapability_ be ! NewPromiseCapability(%Promise%).
-      1. <del>Let _specifierString_ be ToString(_specifier_).</del>
-      1. <del>IfAbruptRejectPromise(_specifierString_, _promiseCapability_).</del>
-      1. Perform ! HostImportModuleDynamically(_referencingScriptOrModule_, <del>_specifierString_</del><ins>_specifier_</ins>, _promiseCapability_).
+      1. Let _specifierString_ be <del>ToString</del> <ins>? HostDynamicValueToSpecifier</ins>(<ins>referencingScriptOrModule_, </ins>_specifier_).
+      1. <ins>Assert Type(_specifierString_) is String.</ins>
+      1. IfAbruptRejectPromise(_specifierString_, _promiseCapability_).
+      1. Perform ! HostImportModuleDynamically(_referencingScriptOrModule_, _specifierString_, _promiseCapability_).
       1. Return _promiseCapability_.[[Promise]].
     </emu-alg>
   </emu-clause>
 
-
   <emu-note type="editor">
-    <p>Warning: this may lead to a different apparent order of operation;
-      user code receives the module promise before the argument is stringified.</p>
-
-<pre><code class="javascript">
-const modulePromise = import({
-  toString() {
-    console.log('stringified');
-    return './foo';
-  },
-};
-console.log('got promise');
-modulePromise.then(
-  () =&gt; { console.log('module resolved'); },
-() =&gt; { console.log('module rejected'); });
-
-// Before:              stringified, got promise, module ...
-//                                 &#10537;
-// With this proposal:  got promise, stringified, module ...
-</code></pre>
-
-    <p>This could be fixed by stringifying and passing both _specifier_ and
-      _specifierString_ through to the host callout, and adding a requirement
-      that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).</p>
-  </emu-note>
-</emu-clause>
-
-<hr>
-
-<emu-clause id="sec-hostimportmoduledynamically" aoid="HostImportModuleDynamically">
-  <emu-note type="editor">
-    Second, this proposal adjusts HostImportModuleDynamically to deal with non-string
-    _specifier_s.  It also threads the eventual string for of the specifier through to
-    FinishDynamicImport.  This allows us to maintain the apparent order of operations.
+    <p>Second, this proposal defines the new host callout.</p>
   </emu-note>
 
-  <h1>Runtime Semantics: HostImportModuleDynamically ( _referencingScriptOrModule_, _specifier_, _promiseCapability_ )</h1>
+  <emu-clause id="sec-hostdynamicvaluetospecifier" aoid="HostDynamicValueToSpecifier">
+    <h1><ins>Runtime Semantics: HostDynamicValueToSpecifier ( _referencingScriptOrModule_, _specifier_ )</ins></h1>
+    <p><ins>HostDynamicValueToSpecifier is an implementation-defined
+    abstract operation that converts a runtime value representing a
+    module specifier, _specifier_, to a string that corresponds to a
+    |ModuleSpecifier| String.  The host also receives the Script
+    Record or Module Record, _referencingScriptOrModule_.
+    _referencingScriptOrModule_ may be *null*, if the
+    resolution is being performed in the context of
+    an <emu-xref href="#sec-import-calls">`import()`</emu-xref>
+    expression, and there is no active script or module at that
+    time.</ins></p>
 
-  <p>HostImportModuleDynamically is an implementation-defined abstract
-  operation that performs any necessary setup work in order to make
-  available the module corresponding to the |ModuleSpecifier| String,
-  _specifier_, occurring within the context of the script or module
-  represented by the Script Record or Module Record
-  _referencingScriptOrModule_. (_referencingScriptOrModule_ may also
-  be *null*, if there is no active script or module when
-  the <emu-xref href="#sec-import-calls">`import()`</emu-xref>
-  expression occurs.) It then performs FinishDynamicImport to finish
-  the dynamic import process.</p>
+    <p><ins>The default implementation performs the following steps:</ins></p>
+    <emu-alg>
+      1. <ins>Return ? ToString(_specifier_).</ins>
+    </emu-alg>
 
-  <p>The implementation of HostImportModuleDynamically must conform to
-  the following requirements:</p>
-
-  <ul>
-    <li>
-      The abstract operation must always complete normally with
-      *undefined*. Success or failure must instead be signaled as
-      discussed below.
-    </li>
-    <li>
-      <ins>The abstract operation must perform ToString(_specifier_)
-      exactly once.  If it completes abruptly, the abstract operation
-      must take the failure path below.</ins>
-    </li>
-    <li>
-      The host environment must conform to one of the two following sets of requirements:
-      <dl>
-        <dt>Success path</dt>
-
-        <dd>
-          <ul>
-            <li>At some future time, the host environment must perform
-            FinishDynamicImport(_referencingScriptOrModule_,
-            _specifier_, _promiseCapability_,
-            NormalCompletion(<del>*undefined*</del> <ins>_specifierString_</ins>))
-            <ins>where _specifierString_ is a String</ins>.
-            <ins>Normally, _specifierString_ is the result of stringifying _specifier_.</ins>
-            </li>
-
-            <li>Any subsequent call to HostResolveImportedModule after
-            FinishDynamicImport has completed, given the arguments
-            _referencingScriptOrModule_
-            and <del>_specifier_</del><ins>NormalCompletion(_specifierString_)</ins>,
-            must complete normally.</li>
-
-            <li>The completion value of any subsequent call to
-            HostResolveImportedModule after FinishDynamicImport has
-            completed, given the arguments _referencingScriptOrModule_
-            and <del>_specifier_</del><ins>NormalCompletion(_specifierString_)</ins>,
-            must be a module which has already been evaluated,
-            i.e. whose Evaluate concrete method has already been
-            called and returned a normal completion.</li>
-          </ul>
-        </dd>
-
-        <dt>Failure path</dt>
-
-        <dd>
-          <ul>
-            <li>At some future time, the host environment must perform
-            FinishDynamicImport(_referencingScriptOrModule_,
-            _specifier_, _promiseCapability_, an abrupt completion),
-            with the abrupt completion representing the cause of
-            failure.</li>
-          </ul>
-        </dd>
-      </dl>
-    </li>
-    <li>
-      <del>
-      Every call to HostImportModuleDynamically with the same
-      _referencingScriptOrModule_ and _specifier_ arguments must
-      conform to the <em>same</em> set of requirements above as
-      previous calls do. That is, if the host environment takes the
-      success path once for a given _referencingScriptOrModule_,
-      _specifier_ pair, it must always do so, and the same for the
-      failure path.
-      </del>
-
-      <emu-note type="editor">
-        Since _specifier_ is not a string, the <em>same</em> would mean
-        less, but this is not necessary to preserve any single-fetch requirement
-        since FinishDynamicImport delegates to HostResolveImportModule which says
-        <blockquote>
-          "This operation must be idempotent if it completes
-          normally. Each time it is called with a specific
-          _referencingScriptOrModule_, _specifier_ pair as arguments
-          it must return the same Module Record instance."
-        </blockquote>
-      </emu-note>
-    </li>
-    <li>
-      The operation must not call _promiseCapability_.[[Resolve]] or
-      _promiseCapability_.[[Reject]], but instead must treat
-      _promiseCapability_ as an opaque identifying value to be passed
-      through to FinishDynamicImport.
-    </li>
-  </ul>
-
-  <p>The actual process performed is implementation-defined, but
-  typically consists of performing whatever I/O operations are
-  necessary to allow HostResolveImportedModule to synchronously
-  retrieve the appropriate Module Record, and then calling its
-  Evaluate concrete method. This might require performing similar
-  normalization as HostResolveImportedModule does.</p>
-</emu-clause>
-
-<hr>
-
-<emu-clause id="sec-finishdynamicimport" aoid="FinishDynamicImport">
-  <emu-note type="editor">
-    Finally, we adjust FinishDynamicImport to use the module specifier
-    string computed by the host callout.
-  </emu-note>
-
-  <h1>Runtime Semantics: FinishDynamicImport ( _referencingScriptOrModule_, _specifier_, _promiseCapability_, _completion_ )</h1>
-
-  <p>FinishDynamicImport completes the process of a dynamic import
-  originally started by an
-  <emu-xref href="#sec-import-calls">`import()`</emu-xref> call,
-  resolving or rejecting the promise returned by that call as
-  appropriate according to _completion_. It is performed by host
-  environments as part of HostImportModuleDynamically.</p>
-
-  <emu-alg>
-    1. If _completion_ is an abrupt completion, then perform ! Call(_promiseCapability_.[[Reject]], *undefined*, « _completion_.[[Value]] »).
-    1. Else,
-      1. <del>Assert: _completion_ is a normal completion and _completion_.[[Value]] is *undefined*.</del>
-      1. <ins>Let _specifierString_ be ! _completion_.</ins>
-      1. <ins>Assert: Type(_specifierString_) is String.</ins>
-      1. Let _moduleRecord_ be ! HostResolveImportedModule(_referencingScriptOrModule_, <del>_specifier_</del><ins>_specifierString_</ins>).
-      1. Assert: Evaluate has already been invoked on _moduleRecord_ and successfully completed.
-      1. Let _namespace_ be GetModuleNamespace(_moduleRecord_).
-      1. If _namespace_ is an abrupt completion, perform ! Call(_promiseCapability_.[[Reject]], *undefined*, « _namespace_.[[Value]] »).
-      1. Else, perform ! Call(_promiseCapability_.[[Resolve]], *undefined*, « _namespace_.[[Value]] »).
-  </emu-alg>
+    <p><ins>The implementation of HostDynamicValueToSpecifier must
+    conform to the following requirements:</ins></p>
+    <ul>
+      <li><ins>When HostDynamicValueToSpecifier completes normally, its result must
+        be a string.</ins></li>
+      <li><ins>HostDynamicValueToSpecifier may not stringify _specifier_ more
+        than once.</ins></li>
+    </ul>
+  </emu-clause>
 </emu-clause>
