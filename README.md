@@ -4,7 +4,7 @@
 | ------------- | ------------- |
 | **Stage**     | [0](https://tc39.es/process-document/) |
 | **Spec**      | [source](https://github.com/mikesamuel/dynamic-import-host-adjustment/blob/master/spec.emu), [output](https://mikesamuel.github.io/dynamic-import-host-adjustment/) |
-| **Tests**     | TODO |
+| **Tests**     | [TODO](#testing) |
 | **Champion**  | @mikesamuel |
 | **Reviewers** | TBD |
 
@@ -21,6 +21,41 @@ This adjusts the host callout which enables dynamic loading to enable:
     allow checking whether the value is an instance of an appropriate trusted type.
 1.  The host callout to control stringification and convey the result to FinishDynamicImport
     to avoid repeated stringification, and to integrate with [default policies][default policy].
+
+## Testing
+
+Tests, to be written, will be implemented as
+[web-platform-tests](https://github.com/web-platform-tests/wpt) and
+will focus on the following properties:
+
+1.  Polymorphic objects stringified once.  Something like
+    ```js
+    importScripts("/resources/testharness.js");
+
+    test(
+      () => {
+        let stringifyCount = 0;
+        import({
+          toString() {
+            let specifier = `data:text/javascript,export default ${ stringifyCount }`;
+            ++stringifyCount;
+            return specifier;
+          }
+        })
+        .then(
+          (defaultExport) => {
+            assert_equals(stringifyCount, 1);
+            assert_equals(defaultExport, 0);
+          },
+          (err) => {
+            assert_equals(err, null);
+          })
+        .finally(done);
+      },
+      'DynamicImportStringifiesSpecifierOnce');
+    ```
+1.  The above, with coverage for both *null* and non-*null* referencing modules.
+1.  Tests specific to trusted-types host implementation.
 
 TODO: Find bug on `import('data:...')` as CSP bypass.
 
