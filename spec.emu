@@ -28,7 +28,7 @@ contributors: Mike Samuel
       1. Let _argRef_ be the result of evaluating |AssignmentExpression|.
       1. Let _specifier_ be ? GetValue(_argRef_).
       1. Let _promiseCapability_ be ! NewPromiseCapability(%Promise%).
-      1. Let _specifierString_ be <del>ToString</del> <ins>? HostDynamicValueToSpecifier</ins>(<ins>referencingScriptOrModule_, </ins>_specifier_).
+      1. Let _specifierString_ be <del>ToString</del> <ins>? HostDynamicValueToSpecifier</ins>(<ins>_referencingScriptOrModule_, </ins>_specifier_).
       1. <ins>Assert Type(_specifierString_) is String.</ins>
       1. IfAbruptRejectPromise(_specifierString_, _promiseCapability_).
       1. Perform ! HostImportModuleDynamically(_referencingScriptOrModule_, _specifierString_, _promiseCapability_).
