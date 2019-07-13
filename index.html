@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./spec.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
-<title>Dynamic Import Host Adjustment</title><script type="application/json" id="menu-search-biblio">[{"type":"production","id":"prod-ImportCall","name":"ImportCall","referencingIds":[],"namespace":"<no location>","location":"","key":"ImportCall"},{"type":"clause","id":"sec-import-call-runtime-semantics-evaluation","aoid":null,"title":"Runtime Semantics: Evaluation","titleHTML":"Runtime Semantics: Evaluation","number":"1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: Evaluation"},{"type":"op","aoid":"HostDynamicValueToSpecifier","refId":"sec-hostdynamicvaluetospecifier","location":"","referencingIds":[],"key":"HostDynamicValueToSpecifier"},{"type":"clause","id":"sec-hostdynamicvaluetospecifier","aoid":"HostDynamicValueToSpecifier","title":"Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )","titleHTML":"<ins>Runtime Semantics: HostDynamicValueToSpecifier ( <var>referencingScriptOrModule</var>, <var>specifier</var> )</ins>","number":"1.2","namespace":"<no location>","location":"","referencingIds":["_ref_5"],"key":"Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )"},{"type":"clause","id":"sec-import-calls","aoid":null,"title":"Import Calls","titleHTML":"Import Calls","number":"1","namespace":"<no location>","location":"","referencingIds":["_ref_0"],"key":"Import Calls"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
+<title>Dynamic Import Host Adjustment</title><script type="application/json" id="menu-search-biblio">[{"type":"production","id":"prod-ImportCall","name":"ImportCall","referencingIds":[],"namespace":"<no location>","location":"","key":"ImportCall"},{"type":"clause","id":"sec-import-call-runtime-semantics-evaluation","aoid":null,"title":"Runtime Semantics: Evaluation","titleHTML":"Runtime Semantics: Evaluation","number":"1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: Evaluation"},{"type":"op","aoid":"HostDynamicValueToSpecifier","refId":"sec-hostdynamicvaluetospecifier","location":"","referencingIds":[],"key":"HostDynamicValueToSpecifier"},{"type":"clause","id":"sec-hostdynamicvaluetospecifier","aoid":"HostDynamicValueToSpecifier","title":"Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )","titleHTML":"<ins>Runtime Semantics: HostDynamicValueToSpecifier ( <var>referencingScriptOrModule</var>, <var>specifier</var> )</ins>","number":"1.2","namespace":"<no location>","location":"","referencingIds":["_ref_7"],"key":"Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )"},{"type":"clause","id":"sec-import-calls","aoid":null,"title":"Import Calls","titleHTML":"Import Calls","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"Import Calls"},{"type":"clause","id":"sec-import-call-runtime-semantics-evaluation","aoid":null,"title":"Runtime Semantics: Evaluation","titleHTML":"Runtime Semantics: Evaluation","number":"2.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Runtime Semantics: Evaluation"},{"type":"clause","id":"sec-import-calls","aoid":null,"title":"Import Calls","titleHTML":"Import Calls","number":"2","namespace":"<no location>","location":"","referencingIds":["_ref_0","_ref_1","_ref_2"],"key":"Import Calls"},{"type":"op","aoid":"HostImportModuleDynamically","refId":"sec-hostimportmoduledynamically","location":"","referencingIds":[],"key":"HostImportModuleDynamically"},{"type":"clause","id":"sec-hostimportmoduledynamically","aoid":"HostImportModuleDynamically","title":"Runtime Semantics: HostImportModuleDynamically ( referencingScriptOrModule, specifier, promiseCapability )","titleHTML":"Runtime Semantics: HostImportModuleDynamically ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var> )","number":"3","namespace":"<no location>","location":"","referencingIds":["_ref_10","_ref_12","_ref_18","_ref_36"],"key":"Runtime Semantics: HostImportModuleDynamically ( referencingScriptOrModule, specifier, promiseCapability )"},{"type":"op","aoid":"FinishDynamicImport","refId":"sec-finishdynamicimport","location":"","referencingIds":[],"key":"FinishDynamicImport"},{"type":"clause","id":"sec-finishdynamicimport","aoid":"FinishDynamicImport","title":"Runtime Semantics: FinishDynamicImport ( referencingScriptOrModule, specifier, promiseCapability, completion )","titleHTML":"Runtime Semantics: FinishDynamicImport ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var>, <var>completion</var> )","number":"4","namespace":"<no location>","location":"","referencingIds":["_ref_20","_ref_21","_ref_23","_ref_26","_ref_29","_ref_31","_ref_32","_ref_33"],"key":"Runtime Semantics: FinishDynamicImport ( referencingScriptOrModule, specifier, promiseCapability, completion )"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
 
 function Search(menu) {
   this.menu = menu;
@@ -1805,12 +1805,27 @@ li.menu-search-result-term:before {
     display: none; 
   }
 }
-</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-import-calls" title="Import Calls"><span class="secnum">1</span> Import Calls</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-import-call-runtime-semantics-evaluation" title="Runtime Semantics: Evaluation"><span class="secnum">1.1</span> RS: Evaluation</a></li><li><span class="item-toggle-none"></span><a href="#sec-hostdynamicvaluetospecifier" title="Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )"><span class="secnum">1.2</span> <ins>RS: HostDynamicValueToSpecifier ( <var>referencingScriptOrModule</var>, <var>specifier</var> )</ins></a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 0 Draft / June 20, 2019</h1><h1 class="title">Dynamic Import Host Adjustment</h1>
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-import-calls" title="Import Calls"><span class="secnum">1</span> Import Calls</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-import-call-runtime-semantics-evaluation" title="Runtime Semantics: Evaluation"><span class="secnum">1.1</span> RS: Evaluation</a></li><li><span class="item-toggle-none"></span><a href="#sec-hostdynamicvaluetospecifier" title="Runtime Semantics: HostDynamicValueToSpecifier ( referencingScriptOrModule, specifier )"><span class="secnum">1.2</span> <ins>RS: HostDynamicValueToSpecifier ( <var>referencingScriptOrModule</var>, <var>specifier</var> )</ins></a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-import-calls" title="Import Calls"><span class="secnum">2</span> Import Calls</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-import-call-runtime-semantics-evaluation" title="Runtime Semantics: Evaluation"><span class="secnum">2.1</span> RS: Evaluation</a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-hostimportmoduledynamically" title="Runtime Semantics: HostImportModuleDynamically ( referencingScriptOrModule, specifier, promiseCapability )"><span class="secnum">3</span> RS: HostImportModuleDynamically ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-finishdynamicimport" title="Runtime Semantics: FinishDynamicImport ( referencingScriptOrModule, specifier, promiseCapability, completion )"><span class="secnum">4</span> RS: FinishDynamicImport ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var>, <var>completion</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 0 Draft / July 13, 2019</h1><h1 class="title">Dynamic Import Host Adjustment</h1>
+
+<p>This proposal allows the host to adjust the argument, <emu-val>x</emu-val>, in
+<code>import(x)</code> so that Trusted Types can use runtime-type information
+to decide whether to allow the import to proceed.</p>
+
+<p>For more detail see the
+
+<a href="https://github.com/mikesamuel/dynamic-import-host-adjustment/blob/master/README.md">explainer</a>.</p>
+
+<p>This proposal lays out two options:</p>
+
+<ul>
+  <li><a href="#option1">Define a new host callout</a></li>
+  <li><a href="#option2">Reuse HostImportModuleDynamically</a></li>
+</ul>
+
+<h2 id="option1">Option 1: Define a new host callout</h2>
 
 <emu-clause id="sec-import-calls">
   <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
-    <p>See the  <a href="https://github.com/mikesamuel/dynamic-import-host-adjustment#dynamic-import-host-adjustment">explainer</a>.</p>
-
     <p>First, this proposal adjusts <code>import(...)</code> to stringify its argument
     via a host callout.</p>
   </div></emu-note>
@@ -1823,7 +1838,7 @@ li.menu-search-result-term:before {
     <emu-grammar><emu-production name="ImportCall" collapsed="" id="prod-ImportCall">
     <emu-nt><a href="#prod-ImportCall">ImportCall</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="26c293e4"><emu-t>import</emu-t><emu-t>(</emu-t><emu-nt><a href="https://tc39.github.io/ecma262/#prod-AssignmentExpression">AssignmentExpression</a></emu-nt><emu-t>)</emu-t></emu-rhs>
 </emu-production></emu-grammar>
-    <emu-alg><ol><li>Let <var>referencingScriptOrModule</var> be !&nbsp;<emu-xref aoid="GetActiveScriptOrModule" id="_ref_1"><a href="https://tc39.github.io/ecma262/#sec-getactivescriptormodule">GetActiveScriptOrModule</a></emu-xref>().</li><li>Let <var>argRef</var> be the result of evaluating <emu-nt><a href="https://tc39.github.io/ecma262/#prod-AssignmentExpression">AssignmentExpression</a></emu-nt>.</li><li>Let <var>specifier</var> be ?&nbsp;<emu-xref aoid="GetValue" id="_ref_2"><a href="https://tc39.github.io/ecma262/#sec-getvalue">GetValue</a></emu-xref>(<var>argRef</var>).</li><li>Let <var>promiseCapability</var> be !&nbsp;<emu-xref aoid="NewPromiseCapability" id="_ref_3"><a href="https://tc39.github.io/ecma262/#sec-newpromisecapability">NewPromiseCapability</a></emu-xref>(<emu-xref href="#sec-promise-constructor"><a href="https://tc39.github.io/ecma262/#sec-promise-constructor">%Promise%</a></emu-xref>).</li><li>Let <var>specifierString</var> be <del><emu-xref aoid="ToString" id="_ref_4"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref></del> <ins><emu-xref aoid="HostDynamicValueToSpecifier" id="_ref_5"><a href="#sec-hostdynamicvaluetospecifier">HostDynamicValueToSpecifier</a></emu-xref></ins>(<ins><var>referencingScriptOrModule</var>, </ins><var>specifier</var>).</li><li><emu-xref aoid="IfAbruptRejectPromise" id="_ref_6"><a href="https://tc39.github.io/ecma262/#sec-ifabruptrejectpromise">IfAbruptRejectPromise</a></emu-xref>(<var>specifierString</var>, <var>promiseCapability</var>).</li><li><ins>Assert <emu-xref aoid="Type" id="_ref_7"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>specifierString</var>) is String.</ins></li><li>Perform !&nbsp;HostImportModuleDynamically(<var>referencingScriptOrModule</var>, <var>specifierString</var>, <var>promiseCapability</var>).</li><li>Return <var>promiseCapability</var>.[[Promise]].
+    <emu-alg><ol><li>Let <var>referencingScriptOrModule</var> be !&nbsp;<emu-xref aoid="GetActiveScriptOrModule" id="_ref_3"><a href="https://tc39.github.io/ecma262/#sec-getactivescriptormodule">GetActiveScriptOrModule</a></emu-xref>().</li><li>Let <var>argRef</var> be the result of evaluating <emu-nt><a href="https://tc39.github.io/ecma262/#prod-AssignmentExpression">AssignmentExpression</a></emu-nt>.</li><li>Let <var>specifier</var> be ?&nbsp;<emu-xref aoid="GetValue" id="_ref_4"><a href="https://tc39.github.io/ecma262/#sec-getvalue">GetValue</a></emu-xref>(<var>argRef</var>).</li><li>Let <var>promiseCapability</var> be !&nbsp;<emu-xref aoid="NewPromiseCapability" id="_ref_5"><a href="https://tc39.github.io/ecma262/#sec-newpromisecapability">NewPromiseCapability</a></emu-xref>(<emu-xref href="#sec-promise-constructor"><a href="https://tc39.github.io/ecma262/#sec-promise-constructor">%Promise%</a></emu-xref>).</li><li>Let <var>specifierString</var> be <del><emu-xref aoid="ToString" id="_ref_6"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref></del> <ins><emu-xref aoid="HostDynamicValueToSpecifier" id="_ref_7"><a href="#sec-hostdynamicvaluetospecifier">HostDynamicValueToSpecifier</a></emu-xref></ins>(<ins><var>referencingScriptOrModule</var>, </ins><var>specifier</var>).</li><li><emu-xref aoid="IfAbruptRejectPromise" id="_ref_8"><a href="https://tc39.github.io/ecma262/#sec-ifabruptrejectpromise">IfAbruptRejectPromise</a></emu-xref>(<var>specifierString</var>, <var>promiseCapability</var>).</li><li><ins>Assert <emu-xref aoid="Type" id="_ref_9"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>specifierString</var>) is String.</ins></li><li>Perform !&nbsp;<emu-xref aoid="HostImportModuleDynamically" id="_ref_10"><a href="#sec-hostimportmoduledynamically">HostImportModuleDynamically</a></emu-xref>(<var>referencingScriptOrModule</var>, <var>specifierString</var>, <var>promiseCapability</var>).</li><li>Return <var>promiseCapability</var>.[[Promise]].
     </li></ol></emu-alg>
   </emu-clause>
 
@@ -1845,7 +1860,7 @@ li.menu-search-result-term:before {
     time.</ins></p>
 
     <p><ins>The default implementation performs the following steps:</ins></p>
-    <emu-alg><ol><li><ins>Return ?&nbsp;<emu-xref aoid="ToString" id="_ref_8"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>specifier</var>).</ins>
+    <emu-alg><ol><li><ins>Return ?&nbsp;<emu-xref aoid="ToString" id="_ref_11"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>specifier</var>).</ins>
     </li></ol></emu-alg>
 
     <p><ins>The implementation of HostDynamicValueToSpecifier must
@@ -1857,6 +1872,206 @@ li.menu-search-result-term:before {
         than once.</ins></li>
     </ul>
   </emu-clause>
+</emu-clause>
+
+<hr>
+
+<h2 id="option2">Option 2: Reuse HostImportModuleDynamically</h2>
+
+
+<emu-clause id="sec-import-calls">
+  <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
+    <p>Like the first option, this proposal adjusts <code>import(...)</code> to not stringify
+    its argument too early.
+    This means that <emu-xref aoid="HostImportModuleDynamically" id="_ref_12"><a href="#sec-hostimportmoduledynamically">HostImportModuleDynamically</a></emu-xref> could pass given a
+    TrustedModuleSpecifier but not given a raw string.</p>
+  </div></emu-note>
+
+  <h1><span class="secnum">2</span>Import Calls</h1>
+
+  <emu-clause id="sec-import-call-runtime-semantics-evaluation">
+    <h1><span class="secnum">2.1</span>Runtime Semantics: Evaluation</h1>
+
+    <emu-grammar><emu-production name="ImportCall" collapsed="">
+    <emu-nt><a href="#prod-ImportCall">ImportCall</a></emu-nt><emu-geq>:</emu-geq><emu-rhs a="26c293e4"><emu-t>import</emu-t><emu-t>(</emu-t><emu-nt><a href="https://tc39.github.io/ecma262/#prod-AssignmentExpression">AssignmentExpression</a></emu-nt><emu-t>)</emu-t></emu-rhs>
+</emu-production></emu-grammar>
+    <emu-alg><ol><li>Let <var>referencingScriptOrModule</var> be !&nbsp;<emu-xref aoid="GetActiveScriptOrModule" id="_ref_13"><a href="https://tc39.github.io/ecma262/#sec-getactivescriptormodule">GetActiveScriptOrModule</a></emu-xref>().</li><li>Let <var>argRef</var> be the result of evaluating <emu-nt><a href="https://tc39.github.io/ecma262/#prod-AssignmentExpression">AssignmentExpression</a></emu-nt>.</li><li>Let <var>specifier</var> be ?&nbsp;<emu-xref aoid="GetValue" id="_ref_14"><a href="https://tc39.github.io/ecma262/#sec-getvalue">GetValue</a></emu-xref>(<var>argRef</var>).</li><li>Let <var>promiseCapability</var> be !&nbsp;<emu-xref aoid="NewPromiseCapability" id="_ref_15"><a href="https://tc39.github.io/ecma262/#sec-newpromisecapability">NewPromiseCapability</a></emu-xref>(<emu-xref href="#sec-promise-constructor"><a href="https://tc39.github.io/ecma262/#sec-promise-constructor">%Promise%</a></emu-xref>).</li><li><del>Let <var>specifierString</var> be <emu-xref aoid="ToString" id="_ref_16"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>specifier</var>).</del></li><li><del><emu-xref aoid="IfAbruptRejectPromise" id="_ref_17"><a href="https://tc39.github.io/ecma262/#sec-ifabruptrejectpromise">IfAbruptRejectPromise</a></emu-xref>(<var>specifierString</var>, <var>promiseCapability</var>).</del></li><li>Perform !&nbsp;<emu-xref aoid="HostImportModuleDynamically" id="_ref_18"><a href="#sec-hostimportmoduledynamically">HostImportModuleDynamically</a></emu-xref>(<var>referencingScriptOrModule</var>, <del><var>specifierString</var></del><ins><var>specifier</var></ins>, <var>promiseCapability</var>).</li><li>Return <var>promiseCapability</var>.[[Promise]].
+    </li></ol></emu-alg>
+  </emu-clause>
+
+
+  <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
+    <p>Warning: this may lead to a different apparent order of operation;
+      user code receives the module promise before the argument is stringified.</p>
+
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> modulePromise = <span class="hljs-keyword">import</span>({
+  toString() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'stringified'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'./foo'</span>;
+  },
+};
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'got promise'</span>);
+modulePromise.then(
+  <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'module resolved'</span>); },
+() =&gt; { <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'module rejected'</span>); });
+
+<span class="hljs-comment">// Before:              stringified, got promise, module ...</span>
+<span class="hljs-comment">//                                 ⤩</span>
+<span class="hljs-comment">// With this proposal:  got promise, stringified, module ...</span></code></pre>
+
+    <p>This could be fixed by stringifying and passing both <var>specifier</var> and
+      <var>specifierString</var> through to the host callout, and adding a requirement
+      that the host callout use <var>specifierString</var> in lieu of ? <emu-xref aoid="ToString" id="_ref_19"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>specifier</var>).</p>
+  </div></emu-note>
+</emu-clause>
+
+<hr>
+
+<emu-clause id="sec-hostimportmoduledynamically" aoid="HostImportModuleDynamically">
+  <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
+    Second, this option adjusts HostImportModuleDynamically to deal with non-string
+    <var>specifier</var>s.  It also threads the eventual string for of the specifier through to
+    <emu-xref aoid="FinishDynamicImport" id="_ref_20"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref>.  This allows us to maintain the apparent order of operations.
+  
+  </div></emu-note>
+
+  <h1><span class="secnum">3</span>Runtime Semantics: HostImportModuleDynamically ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var> )</h1>
+
+  <p>HostImportModuleDynamically is an implementation-defined abstract
+  operation that performs any necessary setup work in order to make
+  available the module corresponding to the <emu-nt><a href="https://tc39.github.io/ecma262/#prod-ModuleSpecifier">ModuleSpecifier</a></emu-nt> String,
+  <var>specifier</var>, occurring within the context of the script or module
+  represented by the <emu-xref href="#script-record"><a href="https://tc39.github.io/ecma262/#script-record">Script Record</a></emu-xref> or <emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>
+  <var>referencingScriptOrModule</var>. (<var>referencingScriptOrModule</var> may also
+  be <emu-val>null</emu-val>, if there is no active script or module when
+  the  <emu-xref href="#sec-import-calls" id="_ref_1"><a href="#sec-import-calls"><code>import()</code></a></emu-xref>
+  expression occurs.) It then performs <emu-xref aoid="FinishDynamicImport" id="_ref_21"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref> to finish
+  the dynamic import process.</p>
+
+  <p>The implementation of HostImportModuleDynamically must conform to
+  the following requirements:</p>
+
+  <ul>
+    <li>
+      The abstract operation must always complete normally with
+      <emu-val>undefined</emu-val>. Success or failure must instead be signaled as
+      discussed below.
+    
+    </li>
+    <li>
+      <ins>The abstract operation must perform <emu-xref aoid="ToString" id="_ref_22"><a href="https://tc39.github.io/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>specifier</var>)
+      exactly once.  If it completes abruptly, the abstract operation
+      must take the failure path below.</ins>
+    </li>
+    <li>
+      The host environment must conform to one of the two following sets of requirements:
+      
+      <dl>
+        <dt>Success path</dt>
+
+        <dd>
+          <ul>
+            <li>At some future time, the host environment must perform
+            <emu-xref aoid="FinishDynamicImport" id="_ref_23"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref>(<var>referencingScriptOrModule</var>,
+            <var>specifier</var>, <var>promiseCapability</var>,
+            <emu-xref aoid="NormalCompletion" id="_ref_24"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<del><emu-val>undefined</emu-val></del> <ins><var>specifierString</var></ins>))
+            
+            <ins>where <var>specifierString</var> is a String</ins>.
+            
+            <ins>Normally, <var>specifierString</var> is the result of stringifying <var>specifier</var>.</ins>
+            </li>
+
+            <li>Any subsequent call to <emu-xref aoid="HostResolveImportedModule" id="_ref_25"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref> after
+            <emu-xref aoid="FinishDynamicImport" id="_ref_26"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref> has completed, given the arguments
+            <var>referencingScriptOrModule</var>
+            and  <del><var>specifier</var></del><ins><emu-xref aoid="NormalCompletion" id="_ref_27"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<var>specifierString</var>)</ins>,
+            must complete normally.</li>
+
+            <li>The completion value of any subsequent call to
+            <emu-xref aoid="HostResolveImportedModule" id="_ref_28"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref> after <emu-xref aoid="FinishDynamicImport" id="_ref_29"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref> has
+            completed, given the arguments <var>referencingScriptOrModule</var>
+            and  <del><var>specifier</var></del><ins><emu-xref aoid="NormalCompletion" id="_ref_30"><a href="https://tc39.github.io/ecma262/#sec-normalcompletion">NormalCompletion</a></emu-xref>(<var>specifierString</var>)</ins>,
+            must be a module which has already been evaluated,
+            i.e. whose Evaluate concrete method has already been
+            called and returned a normal completion.</li>
+          </ul>
+        </dd>
+
+        <dt>Failure path</dt>
+
+        <dd>
+          <ul>
+            <li>At some future time, the host environment must perform
+            <emu-xref aoid="FinishDynamicImport" id="_ref_31"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref>(<var>referencingScriptOrModule</var>,
+            <var>specifier</var>, <var>promiseCapability</var>, an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>),
+            with the <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref> representing the cause of
+            failure.</li>
+          </ul>
+        </dd>
+      </dl>
+    </li>
+    <li>
+      <del>
+      Every call to HostImportModuleDynamically with the same
+      <var>referencingScriptOrModule</var> and <var>specifier</var> arguments must
+      conform to the  <em>same</em> set of requirements above as
+      previous calls do. That is, if the host environment takes the
+      success path once for a given <var>referencingScriptOrModule</var>,
+      <var>specifier</var> pair, it must always do so, and the same for the
+      failure path.
+      
+      </del>
+
+      <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
+        <p>Since <var>specifier</var> is not a string, the  <em>same</em> would mean
+        less, but this is not necessary to preserve any single-fetch requirement
+        since <emu-xref aoid="FinishDynamicImport" id="_ref_32"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref> delegates to HostResolveImportModule which says</p>
+        <blockquote>
+          "This operation must be idempotent if it completes
+          normally. Each time it is called with a specific
+          <var>referencingScriptOrModule</var>, <var>specifier</var> pair as arguments
+          it must return the same <emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref> instance."
+        
+        </blockquote>
+      </div></emu-note>
+    </li>
+    <li>
+      The operation must not call <var>promiseCapability</var>.[[Resolve]] or
+      <var>promiseCapability</var>.[[Reject]], but instead must treat
+      <var>promiseCapability</var> as an opaque identifying value to be passed
+      through to <emu-xref aoid="FinishDynamicImport" id="_ref_33"><a href="#sec-finishdynamicimport">FinishDynamicImport</a></emu-xref>.
+    
+    </li>
+  </ul>
+
+  <p>The actual process performed is implementation-defined, but
+  typically consists of performing whatever I/O operations are
+  necessary to allow <emu-xref aoid="HostResolveImportedModule" id="_ref_34"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref> to synchronously
+  retrieve the appropriate <emu-xref href="#sec-abstract-module-records"><a href="https://tc39.github.io/ecma262/#sec-abstract-module-records">Module Record</a></emu-xref>, and then calling its
+  Evaluate concrete method. This might require performing similar
+  normalization as <emu-xref aoid="HostResolveImportedModule" id="_ref_35"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref> does.</p>
+</emu-clause>
+
+<hr>
+
+<emu-clause id="sec-finishdynamicimport" aoid="FinishDynamicImport">
+  <emu-note type="editor"><span class="note">Editor's Note</span><div class="note-contents">
+    <p>Finally, we adjust FinishDynamicImport to use the module specifier
+    string computed by the host callout.</p>
+  </div></emu-note>
+
+  <h1><span class="secnum">4</span>Runtime Semantics: FinishDynamicImport ( <var>referencingScriptOrModule</var>, <var>specifier</var>, <var>promiseCapability</var>, <var>completion</var> )</h1>
+
+  <p>FinishDynamicImport completes the process of a dynamic import
+  originally started by an
+  
+  <emu-xref href="#sec-import-calls" id="_ref_2"><a href="#sec-import-calls"><code>import()</code></a></emu-xref> call,
+  resolving or rejecting the promise returned by that call as
+  appropriate according to <var>completion</var>. It is performed by host
+  environments as part of <emu-xref aoid="HostImportModuleDynamically" id="_ref_36"><a href="#sec-hostimportmoduledynamically">HostImportModuleDynamically</a></emu-xref>.</p>
+
+  <emu-alg><ol><li>If <var>completion</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, then perform !&nbsp;<emu-xref aoid="Call" id="_ref_37"><a href="https://tc39.github.io/ecma262/#sec-call">Call</a></emu-xref>(<var>promiseCapability</var>.[[Reject]], <emu-val>undefined</emu-val>, « <var>completion</var>.[[Value]] »).</li><li>Else,<ol><li><del>Assert: <var>completion</var> is a normal completion and <var>completion</var>.[[Value]] is <emu-val>undefined</emu-val>.</del></li><li><ins>Let <var>specifierString</var> be ! <var>completion</var>.</ins></li><li><ins>Assert: <emu-xref aoid="Type" id="_ref_38"><a href="https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>specifierString</var>) is String.</ins></li><li>Let <var>moduleRecord</var> be !&nbsp;<emu-xref aoid="HostResolveImportedModule" id="_ref_39"><a href="https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule">HostResolveImportedModule</a></emu-xref>(<var>referencingScriptOrModule</var>, <del><var>specifier</var></del><ins><var>specifierString</var></ins>).</li><li>Assert: Evaluate has already been invoked on <var>moduleRecord</var> and successfully completed.</li><li>Let <var>namespace</var> be <emu-xref aoid="GetModuleNamespace" id="_ref_40"><a href="https://tc39.github.io/ecma262/#sec-getmodulenamespace">GetModuleNamespace</a></emu-xref>(<var>moduleRecord</var>).</li><li>If <var>namespace</var> is an <emu-xref href="#sec-completion-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-completion-record-specification-type">abrupt completion</a></emu-xref>, perform !&nbsp;<emu-xref aoid="Call" id="_ref_41"><a href="https://tc39.github.io/ecma262/#sec-call">Call</a></emu-xref>(<var>promiseCapability</var>.[[Reject]], <emu-val>undefined</emu-val>, « <var>namespace</var>.[[Value]] »).</li><li>Else, perform !&nbsp;<emu-xref aoid="Call" id="_ref_42"><a href="https://tc39.github.io/ecma262/#sec-call">Call</a></emu-xref>(<var>promiseCapability</var>.[[Resolve]], <emu-val>undefined</emu-val>, « <var>namespace</var>.[[Value]] »).
+  </li></ol></li></ol></emu-alg>
 </emu-clause><emu-annex id="sec-copyright-and-software-license">
       <h1><span class="secnum">A</span>Copyright &amp; Software License</h1>
       
