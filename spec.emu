@@ -9,9 +9,9 @@ stage: 0
 contributors: Mike Samuel
 </pre>
 
-<p>This proposal allows the host to adjust the argument, *x*, in
-`import(x)` so that Trusted Types can use runtime-type information
-to decide whether to allow the import to proceed.</p>
+<p>This proposal allows the host to inspect and adjust the argument,
+_x_, in `import(x)` so that Trusted Types can use runtime-type
+information to decide whether to allow the import to proceed.</p>
 
 <p>For more detail see the
 <a href="https://github.com/mikesamuel/dynamic-import-host-adjustment/blob/master/README.md">explainer</a>.</p>
