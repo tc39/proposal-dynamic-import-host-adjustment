@@ -113,33 +113,6 @@ information to decide whether to allow the import to proceed.</p>
       1. Return _promiseCapability_.[[Promise]].
     </emu-alg>
   </emu-clause>
-
-
-  <emu-note type="editor">
-    <p>Warning: this may lead to a different apparent order of operation;
-      user code receives the module promise before the argument is stringified.</p>
-
-<pre><code class="javascript">
-const modulePromise = import({
-  toString() {
-    console.log('stringified');
-    return './foo';
-  },
-};
-console.log('got promise');
-modulePromise.then(
-  () =&gt; { console.log('module resolved'); },
-() =&gt; { console.log('module rejected'); });
-
-// Before:              stringified, got promise, module ...
-//                                 &#10537;
-// With this proposal:  got promise, stringified, module ...
-</code></pre>
-
-    <p>This could be fixed by stringifying and passing both _specifier_ and
-      _specifierString_ through to the host callout, and adding a requirement
-      that the host callout use _specifierString_ in lieu of ? ToString(_specifier_).</p>
-  </emu-note>
 </emu-clause>
 
 <hr>
@@ -175,8 +148,37 @@ modulePromise.then(
     </li>
     <li>
       <ins>The abstract operation must perform ToString(_specifier_)
-      exactly once.  If it completes abruptly, the abstract operation
+      at most once.  If it completes abruptly, the abstract operation
       must take the failure path below.</ins>
+    </li>
+    <li>
+      <ins>
+        If the abstract operation performs ToString(_specifier_)
+        it must do so before returning control to the EcmaScript engine.
+      </ins>
+      <emu-note type="editor">
+        <p>This is necessary to prevent a different apparent order of operation
+          that could occur if user code received the module promise before
+          _specifier_ is stringified.</p>
+
+        <p>A non-conforming implementation might behave improperly for:</p>
+        <pre><code class="javascript">
+const modulePromise = import({
+  toString() {
+    console.log('stringified');
+    return './foo';
+  },
+};
+console.log('got promise');
+modulePromise.then(
+  () =&gt; { console.log('module resolved'); },
+  () =&gt; { console.log('module rejected'); });
+
+// Before:              stringified, got promise, module ...
+//                                 &#10537;
+// Non-conforming:      got promise, stringified, module ...
+</code></pre>
+      </emu-note>
     </li>
     <li>
       The host environment must conform to one of the two following sets of requirements:
