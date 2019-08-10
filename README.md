@@ -15,11 +15,11 @@ cannot be undone.
 The dynamic import operator, `import(...)`, loads code and initializes modules.
 Loading code from an untrustworthy source is an operation that cannot be undone.
 
-This adjusts the host callout which enables dynamic loading to enable:
+This adjusts the host callout which enables dynamic loading.  With it:
 
-1.  The host callout to receive a specifier before it is stringified which will
-    allow checking whether the value is an instance of an appropriate trusted type.
-1.  The host callout to control stringification and convey the result to FinishDynamicImport
+1.  The host receives the original specifier (before it is stringified) so can use runtime type
+    information to decide whether to allow code loading to proceed.
+1.  The host callout can control stringification and convey the result to FinishDynamicImport
     to avoid repeated stringification, and to integrate with [default policies][default policy].
 
 ## Testing
@@ -57,7 +57,8 @@ will focus on the following properties:
 1.  The above, with coverage for both *null* and non-*null* referencing modules.
 1.  Tests specific to trusted-types host implementation.
 
-TODO: Find bug on `import('data:...')` as CSP bypass.
+See also [webappsec-csp #243](https://github.com/w3c/webappsec-csp/issues/243)
+on `import('data:...')` as CSP bypass.
 
 [Trusted Types]: https://wicg.github.io/trusted-types/dist/spec/
 [default policy]: https://wicg.github.io/trusted-types/dist/spec/#default-policy-hdr
