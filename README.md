@@ -3,7 +3,7 @@
 |               |               |
 | ------------- | ------------- |
 | **Stage**     | [0](https://tc39.es/process-document/) |
-| **Spec**      | [source](https://github.com/mikesamuel/dynamic-import-host-adjustment/blob/master/spec.emu), [output](https://mikesamuel.github.io/dynamic-import-host-adjustment/) |
+| **Spec**      | [source](https://github.com/tc39/dynamic-import-host-adjustment/blob/master/spec.emu), [output](https://tc39.es/dynamic-import-host-adjustment/) |
 | **Tests**     | [TODO](#testing) |
 | **Champion**  | @mikesamuel |
 | **Reviewers** | TBD |

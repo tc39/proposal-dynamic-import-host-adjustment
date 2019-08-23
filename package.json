@@ -6,10 +6,10 @@
     "build": "ecmarkup spec.emu index.html",
     "precommit": "npm run build"
   },
-  "homepage": "https://github.com/mikesamuel/dynamic-import-host-adjustment#readme",
+  "homepage": "https://github.com/tc39/dynamic-import-host-adjustment#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikesamuel/dynamic-import-host-adjustment.git"
+    "url": "git+https://github.com/tc39/dynamic-import-host-adjustment.git"
   },
   "license": "MIT",
   "devDependencies": {

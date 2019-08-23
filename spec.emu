@@ -14,7 +14,7 @@ _x_, in `import(x)` so that Trusted Types can use runtime-type
 information to decide whether to allow the import to proceed.</p>
 
 <p>For more detail see the
-<a href="https://github.com/mikesamuel/dynamic-import-host-adjustment/blob/master/README.md">explainer</a>.</p>
+<a href="https://github.com/tc39/dynamic-import-host-adjustment/blob/master/README.md">explainer</a>.</p>
 
 <p>This proposal lays out two options:</p>
 
