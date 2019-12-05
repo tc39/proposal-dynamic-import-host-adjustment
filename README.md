@@ -6,7 +6,7 @@
 | **Spec**      | [source](https://github.com/tc39/dynamic-import-host-adjustment/blob/master/spec.emu), [output](https://tc39.es/dynamic-import-host-adjustment/) |
 | **Tests**     | [TODO](#testing) |
 | **Champion**  | @mikesamuel |
-| **Reviewers** | erights, kgibbons, bradley farias |
+| **Reviewers** | @bakkot, @erights, @bmeck |
 
 [Trusted Types][] guards sensitive APIs; it double checks that values
 have been trusted by policy code before performing operations that
